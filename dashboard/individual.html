@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Adriel Alves" />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <title>Horário IEMA</title>
+
+    <link
+      rel="shortcut icon"
+      href="../assets/dist/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../assets/dist/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <script src="../dir/javascript/jquery-3.6.3.min.js"></script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <script
+      type="text/javascript"
+      src="../assets/dist/js/jspdf.debug.js"
+    ></script>
+
+    <link rel="stylesheet" href="../dir/css/index.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../dir/css/index.css" />
+  </head>
+
+  <body>
+    <header
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="../index.html"
+        >IEMA</a
+      >
+      <button
+        class="navbar-toggler position-absolute d-md-none collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu"
+        aria-controls="sidebarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <a class="nav-link px-3" href="#">Sair</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../index.html">
+                  <span data-feather="clipboard"></span>
+                  Horários
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="professores.html">
+                  <span data-feather="users"></span>
+                  Professores
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="disciplinas.html">
+                  <span data-feather="layers"></span>
+                  Disciplinas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="individual.html">
+                  <span data-feather="smile"></span>
+                  Individual
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="backup.html">
+                  <span data-feather="upload-cloud"></span>
+                  Backup
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">
+              HORÁRIO INDIVIDUAL |
+              <span class="nome-professor"></span>
+            </h1>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="professores"
+                  aria-label="Lista de professores cadastrados"
+                ></select>
+                <label for="professores">Professores</label>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="table-responsive">
+            <!-- load data from select class -->
+            <table class="table table-bordered table-hover table-sm horarios">
+              <!-- <h3>TURMA 0 -</h3> -->
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" colspan="2" class="table-invidual">
+                    Segunda
+                  </th>
+                  <th scope="col" colspan="2" class="table-invidual">Terça</th>
+                  <th scope="col" colspan="2" class="table-invidual">Quarta</th>
+                  <th scope="col" colspan="2" class="table-invidual">Quinta</th>
+                  <th scope="col" colspan="2" class="table-invidual">Sexta</th>
+                </tr>
+                <tr>
+                  <th scope="col">HORÁRIOS</th>
+                  <th scope="col" class="table-invidual">Turma</th>
+                  <th scope="col" class="table-invidual">Componente</th>
+                  <th scope="col" class="table-invidual">Turma</th>
+                  <th scope="col" class="table-invidual">Componente</th>
+                  <th scope="col" class="table-invidual">Turma</th>
+                  <th scope="col" class="table-invidual">Componente</th>
+                  <th scope="col" class="table-invidual">Turma</th>
+                  <th scope="col" class="table-invidual">Componente</th>
+                  <th scope="col" class="table-invidual">Turma</th>
+                  <th scope="col" class="table-invidual">Componente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- ROW 1 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    1º <span class="time">7h35- 8h25</span>
+                  </th>
+
+                  <td class="horario" data-row="0" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="0" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ROW 2 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    2º <span class="time">8h25-9h10</span>
+                  </th>
+                  <td class="horario" data-row="1" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="1" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="1" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="1" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="1" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="1" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="1" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="1" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="1" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="1" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- INTERVALO -->
+                <tr class="table-invidual">
+                  <th scope="row" class="periodo" colspan="11">INTERVALO</th>
+                </tr>
+
+                <!-- ROW 3 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    3º <span class="time">9h30- 10h20</span>
+                  </th>
+                  <td class="horario" data-row="2" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="2" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="2" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="2" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="2" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="2" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="2" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="2" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="2" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="2" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ROW 4  -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    4º <span class="time">10h20 -11h10</span>
+                  </th>
+                  <td class="horario" data-row="3" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="3" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="3" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="3" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="3" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="3" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="3" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="3" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="3" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="3" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ROW 5 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    5º <span class="time">11h10-12h</span>
+                  </th>
+                  <td class="horario" data-row="4" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="4" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="4" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="4" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="4" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="4" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="4" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="4" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="4" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="4" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ALMOÇO -->
+                <tr class="table-invidual">
+                  <th scope="row" class="periodo" colspan="11">ALMOÇO</th>
+                </tr>
+
+                <!-- ROW 6 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    6º <span class="time">13h30-14h20</span>
+                  </th>
+                  <td class="horario" data-row="5" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="5" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="5" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="5" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="5" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="5" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="5" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="5" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="5" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="5" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ROW 7 -->
+                <tr>
+                  <th class="periodo">
+                    7º <span class="time">14h20-15h05</span>
+                  </th>
+                  <td class="horario" data-row="6" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="6" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="6" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="6" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="6" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="6" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="6" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="6" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="6" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="6" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- INTERVALO -->
+                <tr class="table-invidual">
+                  <th class="periodo" colspan="11">INTERVALO</th>
+                </tr>
+
+                <!-- ROW 8 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    8º <span class="time">15h20-16h10</span>
+                  </th>
+                  <td class="horario" data-row="7" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="7" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="7" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="7" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="7" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="7" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="7" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="7" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="7" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="7" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+
+                <!-- ROW 9 -->
+                <tr>
+                  <th scope="row" class="periodo">
+                    9º<span class="time">16h10-17h</span>
+                  </th>
+                  <td class="horario" data-row="8" data-col="0">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="8" data-col="1">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="8" data-col="2">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="8" data-col="3">
+                    <span class="componente"></span>
+                  </td>
+                  <td class="horario" data-row="8" data-col="4">
+                    <span class="turma"></span>
+                  </td>
+                  <td class="horario" data-row="8" data-col="5">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="8" data-col="6">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="8" data-col="7">
+                    <span class="componente"></span>
+                  </td>
+
+                  <td class="horario" data-row="8" data-col="8">
+                    <span class="turma"></span>
+                  </td>
+
+                  <td class="horario" data-row="8" data-col="9">
+                    <span class="componente"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="container">
+            <div class="row"></div>
+          </div>
+          <hr />
+        </main>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center">
+              © 2023 - Criado por
+              <a href="https://github.com/adriel45dev">Adriel Alves</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      type="text/javascript"
+      src="../assets/dist/js/jspdf.debug.js"
+    ></script>
+
+    <script src="../dir/javascript/jquery-3.6.3.min.js"></script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/dist/js/feather.min.js"></script>
+
+    <script src="../dir/javascript/data.js"></script>
+    <!-- <script src="../dir/javascript/index.js"></script> -->
+    <script src="../dir/javascript/individual.js"></script>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

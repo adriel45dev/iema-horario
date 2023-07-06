@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Adriel Alves" />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <title>Horário IEMA</title>
+
+    <link
+      rel="shortcut icon"
+      href="../assets/dist/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../assets/dist/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <script src="../dir/javascript/jquery-3.6.3.min.js"></script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- <link rel="stylesheet" href="../dir/css/index.css" /> -->
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet" />
+    <!-- 
+    <link rel="stylesheet" href="../dir/css/index.css" /> -->
+  </head>
+  <body>
+    <header
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="../index.html"
+        >IEMA</a
+      >
+      <button
+        class="navbar-toggler position-absolute d-md-none collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu"
+        aria-controls="sidebarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <a class="nav-link px-3" href="#">Sair</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../index.html">
+                  <span data-feather="clipboard"></span>
+                  Horários
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="professores.html">
+                  <span data-feather="users"></span>
+                  Professores
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="disciplinas.html">
+                  <span data-feather="layers"></span>
+                  Disciplinas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="individual.html">
+                  <span data-feather="smile"></span>
+                  Individual
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="backup.html">
+                  <span data-feather="upload-cloud"></span>
+                  Backup
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">CADASTRO / PROFESSORES</h1>
+          </div>
+
+          <div>
+            <form class="mb-3">
+              <div class="form-row">
+                <div class="col mb-2">
+                  <input
+                    type="text"
+                    id="nome"
+                    class="form-control"
+                    placeholder="Nome"
+                  />
+                </div>
+
+                <!-- TURMAS -->
+                <hr />
+              </div>
+            </form>
+            <button type="button" id="cadastrar" class="btn btn-primary">
+              CADASTRAR
+            </button>
+          </div>
+
+          <hr />
+
+          <div class="alert alert-danger" role="alert">
+            Ao remover uma professor, todos os horários que ele está vinculado
+            serão removidos.
+          </div>
+
+          <div class="table-responsive">
+            <table
+              id="tbl-professores"
+              class="table table-sm table-striped table-bordered text-center"
+            >
+              <thead>
+                <tr class="bg-dark text-light text-center">
+                  <th scope="col">NOME</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">AÇÕES</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-professores"></tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center">
+              © 2023 - Criado por
+              <a href="https://github.com/adriel45dev">Adriel Alves</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../dir/javascript/jquery-3.6.3.min.js"></script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/dist/js/feather.min.js"></script>
+
+    <script src="../dir/javascript/data.js"></script>
+
+    <script src="../dir/javascript/professores.js"></script>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

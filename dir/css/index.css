@@ -1,0 +1,43 @@
+table {
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  border-color: #333 !important;
+}
+
+.periodo {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.professor {
+  display: block;
+}
+
+.table-bg {
+  background: #f1dbdb !important;
+  text-transform: uppercase;
+  font-weight: 900 !important;
+}
+
+.table-invidual {
+  background: #95b3d7 !important;
+  text-transform: uppercase;
+  font-weight: 900 !important;
+}
+
+.time {
+  display: block;
+}
+
+.institucional {
+  display: none;
+}
+
+.horario:hover {
+  background: #b379fe !important;
+}
+
+.ocupado {
+  background-color: #12132c3c !important;
+}
